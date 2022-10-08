@@ -1,0 +1,118 @@
+print("Ejercicio1")
+class Persona:
+    def __init__(self, nombre="", edad=0, dni="")  -> None:
+        self.__nombre = nombre
+        self.__edad = edad
+        self.__dni = dni
+
+    @property
+    def nombre(self):
+        return self.__nombre
+
+    @property
+    def edad(self):
+        return self.__edad
+
+    @property
+    def dni(self):
+        return self.__dni
+    
+    #metodo para validar edad. Que la edad sea positiva
+    def validar_edad(self):
+        while self.__edad < 0:
+            self.__edad  = float(input('Edad invalida, inserta de nuevo: \n'))  
+        else:
+            print('Edad correcta')
+    
+    #metodo para validar que el dni tenga al menos 18 caracteres
+    def validar_dni(self):
+        while len(self.__dni) != 18:
+            self.__dni = input('CURP incorrecta, ingresa una de almenos 18 caracteres: ')
+        else:
+            print('CURP VALIDA')
+    @nombre.setter
+    def nombre(self, nombre):
+        self.__nombre = nombre
+
+    @edad.setter
+    def edad(self, edad):
+        self.__edad = edad
+        self.validar_edad()
+    
+    @dni.setter
+    def dni(self, dni):
+        self.__dni
+        self.validar_dni()
+
+    def mostrar(self):
+        return "Nombre:"+self.__nombre+" - Edad:"+str(self.__edad)+" -DNI:"+self.__dni
+
+persona1 = Persona()
+
+persona1.nombre = input('Ingresa tu nombre: ')
+persona1.dni = input('Ingresa tu CURP, por favor: ')
+persona1.edad = int(input('Ingresa tu edad por favor: '))
+
+print(persona1.mostrar())
+
+print("ejercicio 2")
+class cuenta ():
+    def __init__(self, titular = '', cantidad = 0.00):
+        self.__titular = titular
+        self.__cantidad = cantidad
+
+    @property
+    def titular(self):
+        return self.__titular
+
+    @property
+    def cantidad(self):
+        return self.__cantidad
+
+    def mostrar (self):
+        print(f'Bienvenido {self.__titular}, sy cantidad es de {self.__cantidad}')
+
+    def ingresar (self, nuevacantidad):
+        if nuevacantidad > 0:
+            self.__cantidad += nuevacantidad
+            print(f'Su nuevo saldo es de: {self.__cantidad}')
+        else:
+            print('cantidad incorrecta')
+
+    def retirar(self,nuevacantidad):
+        if nuevacantidad > 0:
+            self.__ -= nuevacantidad
+            print(f'su nuevo saldo es de: {self.__cantidad}')
+        else: print ('cantidad incorrecta')
+
+
+class Cuentajoven (Cuenta):
+    def __init__(self, titular, cantidad, bonificacion, edad):
+        super().__init__(titular, cantidad)
+        self.__bonificacion = bonificacion
+        self.__edad=edad
+
+    @property
+    def bonificacion (self):
+        return self.__bonificacion
+
+    @property
+    def edad (self):
+        return self.__edad
+
+    def titularvalido (self):
+        if self.__edad > 17 and self.__edad < 26:
+            return True
+        else:
+            print('edad no valida')
+
+    def retirar (self, nuevacantidad):
+        if self.titularvalido()== True:
+            super().retirar(nuevacantidad)
+        else:
+            print("No puedes retirar el dinero, titular no valido. titular no valido")
+
+    def mostrar (self):
+        print(f'Bienvenido {self.__titular}, a su {type(self.name)}, su bonificacion es de {self.__bonificacion}%')
+        joven = Cuentajoven ("Jazmin", 1000, 10, 23)
+        joven.retirar(5)
